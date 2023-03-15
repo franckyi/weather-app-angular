@@ -12,9 +12,5 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getRemoteWeather(query: String) {
-    console.log(query)
-  }
-
 }
 
