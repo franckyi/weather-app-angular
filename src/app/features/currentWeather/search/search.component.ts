@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchResponse } from './search-response';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-search',
@@ -8,14 +9,15 @@ import { SearchResponse } from './search-response';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _httpClient: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   getRemoteWeather(query: String) {
     console.log(query)
-    // https://api.openweathermap.org/geo/1.0/direct?q=${text.value}&limit=5&appid=${core.API_KEY}
+
+    return this._httpClient.get<SearchResponse>(`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=61a20f5d41830810abfcc3d15f5f1b2a`)
   }
 
 }
