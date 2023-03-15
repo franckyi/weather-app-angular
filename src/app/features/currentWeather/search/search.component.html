@@ -1,7 +1,7 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Ibiza">
+    <mat-label for="search-input">Search a place</mat-label>
+    <input id="search-input" matInput #query placeholder="Ex. Ibiza">
   </mat-form-field>
 </form>
-<button mat-raised-button color="primary">Check weather</button>
+<button mat-raised-button color="primary" (click)="getRemoteWeather(query.value)">Check weather</button>
