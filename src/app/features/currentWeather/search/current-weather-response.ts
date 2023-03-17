@@ -1,4 +1,4 @@
-export interface SearchResponse {
+export interface CurrentWeatherResponse {
   "name": String,
   "lat": Number,
   "lon": Number,

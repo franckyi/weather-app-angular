@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchResponse } from './search-response';
+import { CurrentWeatherResponse } from './current-weather-response';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
