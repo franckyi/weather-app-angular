@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   getRemoteWeather(query: String) {
     console.log(query)
 
-    return this._httpClient.get<SearchResponse>(`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=61a20f5d41830810abfcc3d15f5f1b2a`)
+    return this._httpClient.get<CurrentWeatherResponse>(`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=61a20f5d41830810abfcc3d15f5f1b2a`)
   }
 
 }
