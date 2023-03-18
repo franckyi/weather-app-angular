@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentWeatherResponse } from '../weather-response';
-import { WeatherComponent } from 'src/app/features/current-weather/weather/weather.component';
+import { WeatherHandlerService } from 'src/app/features/current-weather/weather-handler.service';
 
 @Component({
   selector: 'app-search',
@@ -9,13 +9,13 @@ import { WeatherComponent } from 'src/app/features/current-weather/weather/weath
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private _weatherComponent: WeatherComponent) { }
+  constructor(private _weatherHandlerService: WeatherHandlerService) { }
 
   ngOnInit(): void {
   }
 
   passQuery(query: String) {
-    this._weatherComponent.getRemoteWeather(query)
+    this._weatherHandlerService.getRemoteWeather(query)
   }
 
 }

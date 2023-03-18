@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { WeatherHandlerService } from 'src/app/features/current-weather/weather-handler.service';
 import { CurrentWeatherResponse } from 'src/app/features/current-weather/weather-response';
 
 @Component({
@@ -10,31 +7,13 @@ import { CurrentWeatherResponse } from 'src/app/features/current-weather/weather
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
-@Injectable()
 export class WeatherComponent implements OnInit {
 
-  WEATHER_API = '61a20f5d41830810abfcc3d15f5f1b2a';
-  weather: CurrentWeatherResponse | undefined;
+  current: CurrentWeatherResponse | undefined;
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _weatherHandlerService: WeatherHandlerService) { }
 
   ngOnInit(): void {
-  }
-
-  getLocalWeather(lat: Number, lon: Number) {
-    return this._httpClient.get<CurrentWeatherResponse>
-    (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.WEATHER_API}&units=metric`)
-    .subscribe((data: CurrentWeatherResponse) => this.weather = {
-      name: data.name,
-      state:  data.state,
-      country:  data.country,
-      lat: data.lat,
-      lon: data.lon,
-  });;
-  }
-
-  getRemoteWeather(query: String) {
-    return this._httpClient.get<CurrentWeatherResponse>(`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${this.WEATHER_API}&units=metric`);
   }
 
   getCoords () {
@@ -42,7 +21,30 @@ export class WeatherComponent implements OnInit {
       navigator.geolocation.getCurrentPosition( position => {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
-        this.getLocalWeather(lat, lon)
+        this._weatherHandlerService.getLocalWeather(lat, lon)
+        .subscribe((data: CurrentWeatherResponse) => this.current = {
+          lon: data.coord.lon,
+          lat: data.coord.lat,
+          description: data.weather[0].description,
+          icon: data.weather[0].icon,
+          temp: data.main.temp,
+          feels_like: data.main.feels_like,
+          temp_min: data.main.temp_min,
+          temp_max: data.main.temp_max,
+          pressure: data.main.pressure,
+          humidity: data.main.humidity,
+          visibility: data.visibility,
+          speed: data.wind.speed,
+          deg: data.wind.deg,
+          all: data.clouds.all,
+          dt: data.dt,
+          country: data.sys.country,
+          sunrise: data.sys.sunrise,
+          sunset: data.sys.sunset,
+          timezone: data.timezone,
+          name: data.name,
+          // ...data
+      });
       })
     }
   }
