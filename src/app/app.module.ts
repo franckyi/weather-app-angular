@@ -10,12 +10,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { SearchComponent } from './features/currentWeather/search/search.component';
+import { SearchComponent } from './features/current-weather/search/search.component';
+import { WeatherComponent } from './features/current-weather/weather/weather.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
