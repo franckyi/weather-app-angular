@@ -15,7 +15,8 @@ export class SearchComponent implements OnInit {
   }
 
   passQuery(query: String) {
-    this._weatherHandlerService.getRemoteWeather(query)
+    console.log(query);
+    this._weatherHandlerService.getRemoteWeather(query);
   }
 
 }

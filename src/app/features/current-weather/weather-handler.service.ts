@@ -19,7 +19,8 @@ export class WeatherHandlerService {
   }
 
   getRemoteWeather(query: String) {
-    return this._httpClient.get<CurrentWeatherResponse>(`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${this.WEATHER_API}&units=metric`);
+    return this._httpClient.get<CurrentWeatherResponse>
+    (`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${this.WEATHER_API}&units=metric`);
   }
 
 }

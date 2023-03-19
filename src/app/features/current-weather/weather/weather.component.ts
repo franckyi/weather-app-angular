@@ -10,6 +10,8 @@ import { CurrentWeatherResponse } from 'src/app/features/current-weather/weather
 export class WeatherComponent implements OnInit {
 
   current: CurrentWeatherResponse | undefined;
+  iconUrl: String | undefined;
+  description: String | undefined;
 
   constructor(private _weatherHandlerService: WeatherHandlerService) { }
 
@@ -27,7 +29,10 @@ export class WeatherComponent implements OnInit {
           (response) => {                           //next() callback
             console.warn('✅ response received')
             this.current = response;
-            console.log('current', this.current)
+            console.log('current', this.current);
+            this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
+            this.description = this.current?.weather[0]?.description;
+
           }
         )
 
@@ -37,6 +42,8 @@ export class WeatherComponent implements OnInit {
 
 
   }
+
+
 
 
 

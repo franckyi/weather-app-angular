@@ -1,9 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body {
-  background: url('./assets/bg.jpg');
+html, body {
+  padding: 0;
   margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url('./assets/bg.jpg');
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: white;
+}
+
+main {
+  padding: 2rem;
+  text-align: center;
+}
+
+::placeholder {
+  color: white;
+}
+
+.mat-form-field-flex {
+  background: rgba(56, 67, 85, 0.77);
+  .mat-form-field-label {
+    color: white;
+  }
 }

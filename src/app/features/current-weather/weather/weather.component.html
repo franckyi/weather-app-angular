@@ -1,50 +1,65 @@
 <mat-card>
   <mat-card-content>
+    <span>
+      {{ current?.name }}, {{ current?.sys?.country }}
+    </span>
+    <span>
+      <img [src]="iconUrl" alt="weather icon">{{ description }}
+    </span>
+    <div class="big-info-container">
+      <mat-icon aria-hidden="false" aria-label="device_thermostat">device_thermostat</mat-icon>
+      <span class="big-info">
+        {{ current?.main?.temp }}°C
+      </span>
+    </div>
     <ul>
       <li>
         <div>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-        </div>{{ current?.name }}, {{ current?.sys?.country }}
-      </li>
-      <li class="big-text">
-        <div>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-        </div>{{ current?.main?.temp || '..' }}°C
+          <mat-icon aria-hidden="false" aria-label="favorite">favorite</mat-icon>
+          <span>Feels like</span>
+        </div>
+        <span>{{ current?.main?.feels_like }} °C</span>
       </li>
       <li>
         <div>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-        </div>{{ current?.main?.feels_like }}
+          <mat-icon aria-hidden="false" aria-label="arrow_upward">arrow_upward</mat-icon>
+          <span>Max</span>
+        </div>
+        <span>{{ current?.main?.temp_max }} °C</span>
       </li>
       <li>
         <div>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-        </div>{{ current?.main?.temp_max }}
+          <mat-icon aria-hidden="false" aria-label="arrow_downward">arrow_downward</mat-icon>
+          <span>Min</span>
+        </div>
+        <span>{{ current?.main?.temp_min }} °C</span>
       </li>
       <li>
         <div>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-        </div>{{ current?.main?.temp_min }}
+          <mat-icon aria-hidden="false" aria-label="grain">grain</mat-icon>
+          <span>Humidity</span>
+        </div>
+        <span>{{ current?.main?.humidity }} %</span>
+
+      </li>
+      <li>
+        <div class="multi-line">
+          <mat-icon aria-hidden="false" aria-label="wind">air</mat-icon>
+          <span>Wind</span>
+        </div>
+        <div class="group">
+          <span>Speed</span><span>{{ current?.wind?.speed }} m/s</span>
+        </div>
+      </li>
+      <li>
+        <span>Deg</span><span>{{ current?.wind?.deg }}</span>
       </li>
       <li>
         <div>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-        </div>{{ current?.main?.humidity }}
-      </li>
-      <li>
-        <div>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-        </div>{{ current?.main?.pressure }}
-      </li>
-      <li>
-        <div>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-        </div>{{ current?.coord?.lat }}
-      </li>
-      <li>
-        <div>
-          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
-        </div>{{ current?.coord?.lon }}
+          <mat-icon aria-hidden="false" aria-label="line_weight">line_weight</mat-icon>
+          <span>Pressure</span>
+        </div>
+        <span>{{ current?.main?.pressure }} hPa</span>
       </li>
     </ul>
   </mat-card-content>
