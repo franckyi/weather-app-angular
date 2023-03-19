@@ -8,6 +8,7 @@ import { WeatherHandlerService } from 'src/app/features/current-weather/weather-
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  results: any | undefined;
 
   constructor(private _weatherHandlerService: WeatherHandlerService) { }
 
@@ -20,12 +21,8 @@ export class SearchComponent implements OnInit {
     .subscribe(
       (response) => {                           //next() callback
         console.warn('✅ response received')
-        console.log(response)
-        // this.current = response;
-        // console.log('current', this.current);
-        // this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
-        // this.description = this.current?.weather[0]?.description;
-
+        console.log('response', response);
+        this.results = response;
       }
     );
 

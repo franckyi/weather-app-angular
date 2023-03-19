@@ -9,5 +9,9 @@
     >
   </mat-form-field>
 </form>
+<datalist>
+  <option value="1" *ngFor="let result of results">{{ result.name }}, {{ result.state }}, {{ result.country }}</option>
+</datalist>
+
 <button mat-raised-button color="secondary"
   (click)="passQuery(query.value); query.value='' ">Check weather</button>
