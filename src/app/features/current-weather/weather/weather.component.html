@@ -40,19 +40,20 @@
           <span>Humidity</span>
         </div>
         <span>{{ current?.main?.humidity }} %</span>
-
       </li>
       <li>
-        <div class="multi-line">
-          <mat-icon aria-hidden="false" aria-label="wind">air</mat-icon>
-          <span>Wind</span>
+        <div>
+          <mat-icon aria-hidden="false" aria-label="wind speed">air</mat-icon>
+          <span>Wind speed</span>
         </div>
-        <div class="group">
-          <span>Speed</span><span>{{ current?.wind?.speed }} m/s</span>
-        </div>
+        <span>{{ current?.wind?.speed }} m/s</span>
       </li>
       <li>
-        <span>Deg</span><span>{{ current?.wind?.deg }}</span>
+        <div>
+          <mat-icon aria-hidden="false" aria-label="wind degrees">explore</mat-icon>
+          <span>Wind degrees</span>
+        </div>
+        <span>{{ current?.wind?.deg }}°</span>
       </li>
       <li>
         <div>
