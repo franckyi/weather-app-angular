@@ -3,19 +3,18 @@
     <span>
       {{ current?.name }}, {{ current?.sys?.country }}
     </span>
-    <span>
-      <img [src]="iconUrl" alt="weather icon">{{ description }}
+    <span class="description">
+      {{ description }}<img [src]="iconUrl" alt="weather icon">
     </span>
     <div class="big-info-container">
-      <mat-icon aria-hidden="false" aria-label="device_thermostat">device_thermostat</mat-icon>
       <span class="big-info">
-        {{ current?.main?.temp }}°C
+        {{ current?.main?.temp }} °C
       </span>
     </div>
     <ul>
       <li>
         <div>
-          <mat-icon aria-hidden="false" aria-label="favorite">favorite</mat-icon>
+          <mat-icon aria-hidden="false" aria-label="temperature feel like">device_thermostat</mat-icon>
           <span>Feels like</span>
         </div>
         <span>{{ current?.main?.feels_like }} °C</span>
@@ -50,7 +49,7 @@
       </li>
       <li>
         <div>
-          <mat-icon aria-hidden="false" aria-label="wind degrees">explore</mat-icon>
+          <mat-icon aria-hidden="false" aria-label="wind degrees">near_me</mat-icon>
           <span>Wind degrees</span>
         </div>
         <span>{{ current?.wind?.deg }}°</span>

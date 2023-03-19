@@ -20,13 +20,15 @@ main {
   text-align: center;
 }
 
-::placeholder {
-  color: white;
-}
-
 .mat-form-field-flex {
   background: rgba(56, 67, 85, 0.77);
   .mat-form-field-label {
+    color: white;
+  }
+}
+
+.mat-input-element {
+  &::placeholder {
     color: white;
   }
 }
