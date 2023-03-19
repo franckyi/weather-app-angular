@@ -1,2 +1,13 @@
-<p>weather works!</p>
-<div>{{ current?.name }}</div>
+<mat-card>
+  <mat-card-content>
+    <span>{{ current?.name }}, {{ current?.sys?.country }}</span>
+    <span class="big-text">{{ current?.main?.temp || '..' }}°C</span>
+    <span>{{ current?.main?.feels_like }}</span>
+    <span>{{ current?.main?.temp_max }}</span>
+    <span>{{ current?.main?.temp_min }}</span>
+    <span>{{ current?.main?.humidity }}</span>
+    <span>{{ current?.main?.pressure }}</span>
+    <span>{{ current?.coord?.lat }}</span>
+    <span>{{ current?.coord?.lon }}</span>
+  </mat-card-content>
+</mat-card>
