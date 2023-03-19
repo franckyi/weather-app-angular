@@ -13,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SearchComponent } from './features/current-weather/search/search.component';
 import { WeatherComponent } from './features/current-weather/weather/weather.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { WeatherComponent } from './features/current-weather/weather/weather.com
     MatFormFieldModule,
     MatSlideToggleModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
