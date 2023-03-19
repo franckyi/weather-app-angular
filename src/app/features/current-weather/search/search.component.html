@@ -1,8 +1,13 @@
 <form>
   <mat-form-field>
     <mat-label for="search-input">Search a place</mat-label>
-    <input id="search-input" #query matInput placeholder="Ex. Ibiza">
+    <input
+      #query
+      type="text"
+      id="search-input"
+      matInput placeholder="Ex. Ibiza"
+    >
   </mat-form-field>
 </form>
 <button mat-raised-button color="secondary"
-  (click)="passQuery(query.value)">Check weather</button>
+  (click)="passQuery(query.value); query.value='' ">Check weather</button>

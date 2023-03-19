@@ -16,7 +16,8 @@ export class WeatherComponent implements OnInit {
   constructor(private _weatherHandlerService: WeatherHandlerService) { }
 
   ngOnInit() {
-    this.getCoords ()  }
+    this.getCoords ()
+  }
 
   getCoords () {
     console.warn('called getCoords()')
