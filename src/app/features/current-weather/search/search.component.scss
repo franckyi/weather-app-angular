@@ -1,11 +1,28 @@
 .mat-form-field {
   min-width: 280px;
   max-width: 320px;
-  width: 100%;
+  width: 300px;
 }
 
-datalist {
-  display: block;
-  background: #1d9ce4;
-  color: white;
+.results {
+  z-index: 9;
+  position: absolute;
+  top: 14px;
+  padding: 0;
+  width: -webkit-fill-available;
+  line-height: 1.5rem;
+  background: #ffffff;
+  color: black;
+  list-style-type: none;
+  li {
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-visible {
+      background: #ddd;
+    }
+  }
 }

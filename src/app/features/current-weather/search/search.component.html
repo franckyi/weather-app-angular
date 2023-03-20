@@ -1,17 +1,15 @@
-<form>
-  <mat-form-field>
-    <mat-label for="search-input">Search a place</mat-label>
-    <input
-      #query
-      type="text"
-      id="search-input"
-      matInput placeholder="Ex. Ibiza"
-    >
+<mat-form-field>
+  <mat-label for="search-input">Search a place</mat-label>
+  <input
+    #query
+    type="text"
+    id="search-input"
+    matInput placeholder="Ex. Ibiza"
+  >
+  <ul class="results">
+    <li *ngFor="let result of results">{{ result.name }}, {{ result.state }}, {{ result.country }}</li>
+  </ul>
   </mat-form-field>
-</form>
-<datalist>
-  <option value="1" *ngFor="let result of results">{{ result.name }}, {{ result.state }}, {{ result.country }}</option>
-</datalist>
 
 <button mat-raised-button color="secondary"
   (click)="passQuery(query.value); query.value='' ">Check weather</button>
