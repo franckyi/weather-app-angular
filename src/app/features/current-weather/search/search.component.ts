@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
 
   passQuery(query: String) {
     console.log(query);
-    this._weatherHandlerService.getRemoteWeather(query)
+    this._weatherHandlerService.getWeatherByQuery(query)
     .subscribe(
       (response) => {                           //next() callback
         console.warn('✅ response received')
@@ -26,6 +26,20 @@ export class SearchComponent implements OnInit {
       }
     );
 
+  }
+
+  passSelected(i: any) {
+    // console.log('index',i)
+    console.log('lat', this.results[i].lat)
+    console.log('lon', this.results[i].lon)
+    this._weatherHandlerService.getWeatherByCoords(this.results[i].lat, this.results[i].lon)
+    .subscribe(
+      (response) => {
+        console.warn('✅ selected response received')
+        console.log('you selected', response);
+        this.results = response;
+      }
+    );
   }
 
 }

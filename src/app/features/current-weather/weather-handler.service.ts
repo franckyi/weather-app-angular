@@ -13,12 +13,12 @@ export class WeatherHandlerService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  getLocalWeather(lat: Number, lon: Number) {
+  getWeatherByCoords(lat: Number, lon: Number) {
     return this._httpClient.get<CurrentWeatherResponse>
     (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.WEATHER_API}&units=metric`);
   }
 
-  getRemoteWeather(query: String) {
+  getWeatherByQuery(query: String) {
     return this._httpClient.get<CurrentWeatherResponse>
     (`https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${this.WEATHER_API}&units=metric`);
   }

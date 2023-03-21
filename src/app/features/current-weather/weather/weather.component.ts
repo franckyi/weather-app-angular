@@ -25,7 +25,7 @@ export class WeatherComponent implements OnInit {
       navigator.geolocation.getCurrentPosition( position => {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
-        this._weatherHandlerService.getLocalWeather(lat, lon)
+        this._weatherHandlerService.getWeatherByCoords(lat, lon)
         .subscribe(
           (response) => {                           //next() callback
             console.warn('✅ response received')
