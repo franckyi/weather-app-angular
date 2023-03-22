@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CurrentWeatherResponse } from '../weather-response';
 import { WeatherHandlerService } from 'src/app/features/current-weather/weather-handler.service';
-import { WeatherComponent } from '../weather/weather.component';
+// import { WeatherComponent } from '../weather/weather.component';
+// import { WeatherComponent } from '../weather/weather.component';
 
 @Component({
   selector: 'app-search',
@@ -10,12 +11,15 @@ import { WeatherComponent } from '../weather/weather.component';
 })
 export class SearchComponent implements OnInit {
 
-  @Input() _weatherComponent!: WeatherComponent;
+  // @Input() _weatherComponent!: WeatherComponent;
 
   results: any | undefined;
-  remoteWeatherData: CurrentWeatherResponse | undefined;
+  // remoteWeatherData: CurrentWeatherResponse | undefined;
 
-  constructor(private _weatherHandlerService: WeatherHandlerService) { }
+  constructor(
+    private _weatherHandlerService: WeatherHandlerService
+    // private _weatherComponent: WeatherComponent
+  ) { }
 
   ngOnInit(): void {
   }
@@ -41,8 +45,7 @@ export class SearchComponent implements OnInit {
           console.log('✅ new response received', response);
 
           // this.remoteWeatherData = response;
-          this._weatherComponent.populateData(response);
-          // this._weatherComponent.replaceData(this.remoteWeatherData)
+          this._weatherHandlerService.populateData(response);
         }
       );
     }
