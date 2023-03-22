@@ -20,17 +20,17 @@ export class WeatherComponent implements OnInit {
     this.getCoords ()
   }
 
-  replaceData(newData: CurrentWeatherResponse) {
-    this._weatherHandlerService.getWeatherByCoords(newData.coord.lat, newData.coord.lon)
-    .subscribe(
-      (response) => {                           //next() callback
-        console.warn('✅ response received', response)
-        this.current = response;
-        this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
-        this.description = this.current?.weather[0]?.description;
-      }
-    )
-  }
+  // replaceData(newData: CurrentWeatherResponse) {
+  //   this._weatherHandlerService.getWeatherByCoords(newData.coord.lat, newData.coord.lon)
+  //   .subscribe(
+  //     (response) => {                           //next() callback
+  //       console.warn('✅ response received', response)
+  //       this.current = response;
+  //       this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
+  //       this.description = this.current?.weather[0]?.description;
+  //     }
+  //   )
+  // }
 
   getCoords () {
     console.warn('called getCoords()')
@@ -57,9 +57,6 @@ export class WeatherComponent implements OnInit {
     this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
     this.description = this.current?.weather[0]?.description;
   }
-
-
-
 
 
 }

@@ -39,8 +39,10 @@ export class SearchComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log('✅ new response received', response);
-          this.remoteWeatherData = response;
-          this._weatherComponent.replaceData(this.remoteWeatherData)
+
+          // this.remoteWeatherData = response;
+          this._weatherComponent.populateData(response);
+          // this._weatherComponent.replaceData(this.remoteWeatherData)
         }
       );
     }

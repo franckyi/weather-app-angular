@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // import { catchError, retry } from 'rxjs/operators';
 import { CurrentWeatherResponse } from 'src/app/features/current-weather/weather-response';
+import { WeatherComponent } from './weather/weather.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class WeatherHandlerService {
 
   WEATHER_API = '61a20f5d41830810abfcc3d15f5f1b2a';
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient, private _weatherComponent: WeatherComponent) { }
 
   getWeatherByCoords(lat: Number, lon: Number) {
     return this._httpClient.get<CurrentWeatherResponse>
