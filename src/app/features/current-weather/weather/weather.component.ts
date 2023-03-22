@@ -34,6 +34,7 @@ export class WeatherComponent implements OnInit {
 
   getCoords () {
     console.warn('called getCoords()')
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition( position => {
         let lat = position.coords.latitude;
@@ -41,19 +42,20 @@ export class WeatherComponent implements OnInit {
         this._weatherHandlerService.getWeatherByCoords(lat, lon)
         .subscribe(
           (response) => {                           //next() callback
-            console.warn('✅ response received')
-            this.current = response;
-            console.log('current', this.current);
-            this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
-            this.description = this.current?.weather[0]?.description;
+            console.warn('✅ response received');
+            this.populateData(response);
           }
         )
-
-
       })
     }
 
+  }
 
+  populateData(response: CurrentWeatherResponse) {
+    this.current = response;
+    console.log('current', this.current);
+    this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
+    this.description = this.current?.weather[0]?.description;
   }
 
 
