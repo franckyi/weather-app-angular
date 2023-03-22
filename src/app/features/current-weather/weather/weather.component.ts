@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WeatherHandlerService } from 'src/app/features/current-weather/weather-handler.service';
 import { CurrentWeatherResponse } from 'src/app/features/current-weather/weather-response';
 
@@ -9,6 +9,7 @@ import { CurrentWeatherResponse } from 'src/app/features/current-weather/weather
 })
 export class WeatherComponent implements OnInit {
 
+  // @Input() remoteWeatherData!: CurrentWeatherResponse;
   current: CurrentWeatherResponse | undefined;
   iconUrl: String | undefined;
   description: String | undefined;
@@ -17,6 +18,18 @@ export class WeatherComponent implements OnInit {
 
   ngOnInit() {
     this.getCoords ()
+  }
+
+  replaceData(newData: CurrentWeatherResponse) {
+    this._weatherHandlerService.getWeatherByCoords(newData.coord.lat, newData.coord.lon)
+    .subscribe(
+      (response) => {                           //next() callback
+        console.warn('✅ response received', response)
+        this.current = response;
+        this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
+        this.description = this.current?.weather[0]?.description;
+      }
+    )
   }
 
   getCoords () {
@@ -33,7 +46,6 @@ export class WeatherComponent implements OnInit {
             console.log('current', this.current);
             this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
             this.description = this.current?.weather[0]?.description;
-
           }
         )
 
