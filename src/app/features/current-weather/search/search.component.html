@@ -6,7 +6,7 @@
     id="search-input"
     matInput placeholder="Ex. Ibiza"
   >
-  <ul class="results">
+  <ul *ngIf="results" class="results">
     <li *ngFor="let result of results; index as i" (click)="passSelected(i)">{{ i }} {{ result.name }}, {{ result.state }}, {{ result.country }}</li>
   </ul>
   </mat-form-field>

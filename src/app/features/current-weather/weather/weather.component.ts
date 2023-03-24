@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { WeatherHandlerService } from 'src/app/features/current-weather/weather-handler.service';
 import { CurrentWeatherResponse } from 'src/app/features/current-weather/weather-response';
 
@@ -9,17 +9,16 @@ import { CurrentWeatherResponse } from 'src/app/features/current-weather/weather
 })
 export class WeatherComponent implements OnInit {
 
-  // current: CurrentWeatherResponse | undefined;
+  current: CurrentWeatherResponse | undefined;
+  iconUrl: String | undefined;
+  description: String | undefined;
+  // @Input
 
   constructor(private _weatherHandlerService: WeatherHandlerService) { }
 
   ngOnInit() {
     this.getCoords ()
   }
-
-  current = this._weatherHandlerService.current;
-  iconUrl = this._weatherHandlerService.iconUrl;
-  description = this._weatherHandlerService.description;
 
   getCoords () {
     console.warn('called getCoords()')
@@ -30,9 +29,12 @@ export class WeatherComponent implements OnInit {
         let lon = position.coords.longitude;
         this._weatherHandlerService.getWeatherByCoords(lat, lon)
         .subscribe(
-          (response) => {                           //next() callback
-            console.warn('✅ response received');
-            this._weatherHandlerService.populateData(response);
+          (response) => {
+            console.log('populated with this:', this.current);
+            this.current = response;
+            this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
+            this.description = this.current?.weather[0]?.description;
+            // this._weatherHandlerService.populateData(response);
           }
         )
       })
