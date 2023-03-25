@@ -22,7 +22,13 @@
     &:active,
     &:focus,
     &:focus-visible {
-      background: #ddd;
+      background: #a6d8f3;
+      cursor: pointer;
     }
   }
+}
+
+.mat-form-field,
+button {
+  display: block;
 }

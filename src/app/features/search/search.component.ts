@@ -16,7 +16,7 @@ import { AppComponent } from 'src/app/app.component';
       <ul
         *ngIf="results !== null"
         class="results">
-        <li *ngFor="let result of results; index as i" (click)="passSelected(i); query.value = ''">{{ i }} {{ result.name }}, {{ result.state }}, {{ result.country }}</li>
+        <li *ngFor="let result of results; index as i" (click)="passSelected(i); query.value = ''">{{ result.name }}, {{ result.state }}, {{ result.country }}</li>
       </ul>
     </mat-form-field>
     <button mat-raised-button color="secondary"
