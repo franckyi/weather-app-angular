@@ -4,7 +4,16 @@ import { CurrentWeatherResponse } from 'src/app/features/current/weather-respons
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+    <main>
+      <app-search></app-search>
+      <app-current
+      [current]="current"
+      [description]="description">
+      [iconUrl]="iconUrl">
+      </app-current>
+    </main>
+  `,
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {

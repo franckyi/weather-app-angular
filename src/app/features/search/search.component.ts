@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
     this._weatherHandlerService.getWeatherByQuery(query)
     .subscribe(
       (response) => {
-        console.log('✅ response received', response)
+        console.log('✅ results received', response)
         this.results = response;
       }
     );
@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
     this._weatherHandlerService.getWeatherByCoords(this.results[i].lat, this.results[i].lon)
     .subscribe(
       (response) => {
-        console.log('✅ new response received', response);
+        console.log('✅ selected', response);
         // this._weatherHandlerService.populateData(response);
       }
     );
