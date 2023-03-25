@@ -7,6 +7,9 @@ import { CurrentWeatherResponse } from 'src/app/features/current/weather-respons
   styleUrls: ['./current.component.scss']
 })
 export class CurrentComponent {
+
   @Input() current!: CurrentWeatherResponse | undefined;
+  @Input() description!: String | undefined;
+  @Input() iconUrl!: String | undefined;
 
 }
