@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CurrentWeatherResponse } from 'src/app/features/current-weather/weather-response';
+import { CurrentWeatherResponse } from 'src/app/features/current/weather-response';
 
 @Injectable({
   providedIn: 'root'

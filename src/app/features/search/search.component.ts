@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { WeatherHandlerService } from 'src/app/features/current-weather/weather-handler.service';
+import { WeatherHandlerService } from 'src/app/features/service/weather-handler.service';
+import { CurrentWeatherResponse } from '../current/weather-response';
 
 @Component({
   selector: 'app-search',
