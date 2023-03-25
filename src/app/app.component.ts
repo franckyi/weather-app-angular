@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { WeatherHandlerService } from 'src/app/features/service/weather-handler.service';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { WeatherHandlerService } from 'src/app/service/weather-handler.service';
 import { CurrentWeatherResponse } from 'src/app/features/current/weather-response';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -8,23 +9,29 @@ import { CurrentWeatherResponse } from 'src/app/features/current/weather-respons
     <main>
       <app-search></app-search>
       <app-current
+      *ngIf="current !== undefined"
       [current]="current"
-      [description]="description">
-      [iconUrl]="iconUrl">
+      [description]="description"
+      [iconUrl]="iconUrl"
+      >
       </app-current>
     </main>
   `,
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
+
   current: CurrentWeatherResponse | undefined;
   iconUrl: String | undefined;
   description: String | undefined;
 
-  constructor(private _weatherHandlerService: WeatherHandlerService) { }
+  constructor(
+    private _weatherHandlerService: WeatherHandlerService,
+    private _httpClient: HttpClient
+  ) { }
 
   ngOnInit() {
-    console.warn('ngOnInit works!')
     this.getCoords ()
   }
 
@@ -48,8 +55,20 @@ export class AppComponent implements OnInit {
         )
       })
     }
-
   }
 
+  replaceWithSearch(lat: Number, lon: Number) {
+    return this._httpClient.get<CurrentWeatherResponse>
+    (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=61a20f5d41830810abfcc3d15f5f1b2a&units=metric`)
+    .subscribe(
+      (response) => {
+        console.log('✅ selected', response);
+        this.current = response;
+        console.log('current', this.current);
+        this.iconUrl = `https://openweathermap.org/img/wn/${ this.current?.weather[0]?.icon }@2x.png`;
+        this.description = this.current?.weather[0]?.description;
+      }
+    )
+  }
 
 }
